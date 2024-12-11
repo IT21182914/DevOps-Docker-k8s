@@ -1,5 +1,6 @@
 const Todo = require("../models/todoModel");
 
+// Get all todos
 exports.getTodos = async (req, res) => {
   try {
     const todos = await Todo.find();
@@ -11,6 +12,7 @@ exports.getTodos = async (req, res) => {
   }
 };
 
+// Create a new todo
 exports.createTodo = async (req, res) => {
   try {
     const newTodo = new Todo({
