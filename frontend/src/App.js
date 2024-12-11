@@ -17,10 +17,14 @@ const App = () => {
   const handleAdd = (newTodo) => setTodos([...todos, newTodo]);
 
   return (
-    <div>
-      <h1>To-Do App</h1>
-      <TodoForm onAdd={handleAdd} />
-      <TodoList todos={todos} />
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 py-10">
+      <div className="max-w-4xl mx-auto px-4">
+        <h1 className="text-4xl font-extrabold text-gray-800 text-center mb-6">
+          To-Do App
+        </h1>
+        <TodoForm onAdd={handleAdd} />
+        <TodoList todos={todos} />
+      </div>
     </div>
   );
 };

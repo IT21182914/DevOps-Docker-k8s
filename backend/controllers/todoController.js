@@ -3,6 +3,8 @@ const Todo = require("../models/todoModel");
 exports.getTodos = async (req, res) => {
   try {
     const todos = await Todo.find();
+    console.log(todos);
+
     res.json(todos);
   } catch (err) {
     res.status(500).json({ message: err.message });
