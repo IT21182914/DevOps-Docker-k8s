@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { fetchTodos } from "./api";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const loadTodos = async () => {
+      const todos = await fetchTodos();
+      setTodos(todos);
+    };
+    loadTodos();
+  }, []);
+
+  const handleAdd = (newTodo) => setTodos([...todos, newTodo]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>To-Do App</h1>
+      <TodoForm onAdd={handleAdd} />
+      <TodoList todos={todos} />
     </div>
   );
-}
+};
 
 export default App;
